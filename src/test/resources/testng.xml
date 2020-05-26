@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="testName">
+    <test name="testDemo">
+        <classes>
+            <class name="org.example.web.controller.UserControllerTest">
+                <methods>
+                    <include name="testRegister"></include>
+                    <include name="testLogin"></include>
+                    <include name="testSaveInfo"></include>
+                    <include name="testRemove"></include>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+
+    <!--配置监听器-->
+    <listeners>
+        <listener class-name="org.example.config.ExtentTestNGIReporterListener"/>
+    </listeners>
+</suite>

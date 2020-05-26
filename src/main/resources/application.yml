@@ -1,0 +1,7 @@
+server:
+  port: 9000
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://spring_demo:spring_demo@192.168.0.102:27017,192.168.0.102:27018,192.168.0.102:27019/spring_demo?connect=replicaSet&replicaSet=rs0&retryWrites=true&w=majority&readConcern=majority&readPreference=primary
