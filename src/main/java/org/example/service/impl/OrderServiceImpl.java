@@ -1,10 +1,8 @@
 package org.example.service.impl;
 
-import com.mongodb.ReadPreference;
 import com.mongodb.client.result.UpdateResult;
 import lombok.extern.slf4j.Slf4j;
 import org.example.common.exception.CommonServiceException;
-import org.example.common.vo.BaseResponseVO;
 import org.example.entity.Item;
 import org.example.entity.Order;
 import org.example.entity.User;
@@ -28,7 +26,6 @@ public class OrderServiceImpl implements IOrderService {
 
     @Autowired
     private MongoTemplate mongoTemplate;
-
 
     @Override
     @Transactional(rollbackFor = Exception.class)

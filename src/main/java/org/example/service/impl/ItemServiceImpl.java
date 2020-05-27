@@ -27,10 +27,12 @@ public class ItemServiceImpl implements IItemService {
     @Override
     public List<ItemListDTO> list(Integer pageNum, Integer pageSize, String keyword, String sortDirection, String sortColumn) {
         Query query = new Query();
+        // 分页操作
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         query.with(pageable);
 
         if (!StringUtils.isEmpty(keyword)) {
+            // 模糊匹配
             Pattern pattern = Pattern.compile("^.*" + keyword + ".*$", Pattern.CASE_INSENSITIVE);
             Criteria criteria = new Criteria();
             criteria.orOperator(Criteria.where("name").regex(pattern),
@@ -39,6 +41,7 @@ public class ItemServiceImpl implements IItemService {
         }
 
         if (!StringUtils.isEmpty(sortColumn)) {
+            // 排序
             query.with(Sort.by("ASC".equals(sortDirection) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
         }
 

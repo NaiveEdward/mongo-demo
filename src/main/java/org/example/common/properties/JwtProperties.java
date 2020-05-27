@@ -4,8 +4,11 @@ package org.example.common.properties;
 public class JwtProperties {
 
     private static JwtProperties jwtProperties = new JwtProperties();
-    private JwtProperties(){}
-    public static JwtProperties getJwtProperties(){
+
+    private JwtProperties() {
+    }
+
+    public static JwtProperties getJwtProperties() {
         return jwtProperties;
     }
 
@@ -15,7 +18,8 @@ public class JwtProperties {
 
     private String secret = "defaultSecret";
 
-    private Long expiration = 604800L; // 默认是七天
+    // 过期时间：默认是七天
+    private Long expiration = 604800L;
 
     private String authPath = "login";
 

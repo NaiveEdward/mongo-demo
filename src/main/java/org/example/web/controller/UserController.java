@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotBlank;
+
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -38,31 +40,37 @@ public class UserController {
     }
 
     @PostMapping("/save-info")
-    public BaseResponseVO saveInfo(@RequestBody UserInfoVO userInfoVO) {
+    public BaseResponseVO saveInfo(@RequestBody @Validated UserInfoVO userInfoVO) throws CommonServiceException {
+        userInfoVO.checkParam();
+
         boolean flag = userService.saveInfo(userInfoVO);
         return BaseResponseVO.success(flag);
     }
 
     @PostMapping("/remove")
-    public BaseResponseVO remove(String id) {
+    public BaseResponseVO remove(@NotBlank String id) {
         boolean flag = userService.remove(id);
         return BaseResponseVO.success(flag);
     }
 
     @PostMapping("/save-tag")
-    public BaseResponseVO saveTag(@RequestBody UserTagVO userTagVO) {
+    public BaseResponseVO saveTag(@RequestBody @Validated UserTagVO userTagVO) throws CommonServiceException {
+        userTagVO.checkParam();
+
         long count = userService.saveTag(userTagVO);
         return BaseResponseVO.success(count);
     }
 
     @PostMapping("/save-contact")
-    public BaseResponseVO saveContact(@RequestBody UserContactVO userContactVO) {
+    public BaseResponseVO saveContact(@RequestBody @Validated UserContactVO userContactVO) throws CommonServiceException {
+        userContactVO.checkParam();
+
         long count = userService.saveContact(userContactVO);
         return BaseResponseVO.success(count);
     }
 
     @PostMapping("/remove-contact")
-    public BaseResponseVO removeContact(String userId, String id) {
+    public BaseResponseVO removeContact(@NotBlank String userId, @NotBlank String id) {
         boolean flag = userService.removeContact(userId, id);
         return BaseResponseVO.success(flag);
     }

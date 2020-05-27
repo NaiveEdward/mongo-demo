@@ -4,22 +4,24 @@ import lombok.Data;
 import org.example.common.exception.CommonServiceException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
-/**
- * @author : jiangzh
- * @program : com.mooc.meetingfilm.utils.common.vo
- * @description : 表现层公共返回
- **/
 @Data
 public class BaseResponseVO<M> {
 
-    private Integer code;   // 业务编号
-    private String message; // 异常信息
-    private M data;         // 业务数据返回
+    // 业务编号
+    private Integer code;
+
+    // 异常信息
+    private String message;
+
+    // 业务数据返回
+    private M data;
 
     private BaseResponseVO() {
     }
 
-    // 成功但是无参数
+    /**
+     * 成功但是无参数
+     */
     public static BaseResponseVO success() {
         BaseResponseVO response = new BaseResponseVO();
         response.setCode(200);
@@ -27,7 +29,9 @@ public class BaseResponseVO<M> {
         return response;
     }
 
-    // 成功有参数
+    /**
+     * 成功有参数
+     */
     public static <M> BaseResponseVO success(M data) {
         BaseResponseVO response = new BaseResponseVO();
         response.setCode(200);
@@ -36,7 +40,9 @@ public class BaseResponseVO<M> {
         return response;
     }
 
-    // 未登录异常
+    /**
+     * 未登录异常
+     */
     public static <M> BaseResponseVO noLogin() {
         BaseResponseVO response = new BaseResponseVO();
         response.setCode(401);
@@ -44,7 +50,9 @@ public class BaseResponseVO<M> {
         return response;
     }
 
-    // 出现参数异常
+    /**
+     * 出现参数异常
+     */
     public static <M> BaseResponseVO notValidException(MethodArgumentNotValidException e) {
         BaseResponseVO response = new BaseResponseVO();
         response.setCode(400);
@@ -52,7 +60,9 @@ public class BaseResponseVO<M> {
         return response;
     }
 
-    // 出现业务异常
+    /**
+     * 出现业务异常
+     */
     public static <M> BaseResponseVO serviceException(CommonServiceException e) {
         BaseResponseVO response = new BaseResponseVO();
         response.setCode(e.getCode());

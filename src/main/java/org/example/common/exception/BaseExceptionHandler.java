@@ -1,7 +1,6 @@
 package org.example.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.common.vo.BaseRequestVO;
 import org.example.common.vo.BaseResponseVO;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,9 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * 公共异常处理
- */
 @Slf4j
 @ControllerAdvice
 public class BaseExceptionHandler {

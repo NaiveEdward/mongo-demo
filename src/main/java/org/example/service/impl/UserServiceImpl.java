@@ -67,7 +67,6 @@ public class UserServiceImpl implements IUserService {
         return user;
     }
 
-
     @Override
     public boolean saveInfo(UserInfoVO userInfoVO) {
         Query query = new Query()
